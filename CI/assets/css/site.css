@@ -1,0 +1,29 @@
+body {
+	background-color: #C390D4;
+	font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+	font-size: 20px;
+	width: 100%;
+	padding: 10px;
+}
+
+.FormviewerHeaderTitle {
+	margin-bottom: 35px;
+	font-size: 40px;
+}
+
+.ViewHeaderDescription {
+	font-size: 14px;
+}
+
+#topbody {
+	background-color: #fff;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #DFDFDF;
+	padding: 20px;
+}
+
+#footer {
+        height: 100px;
+        width: 90%;
+}

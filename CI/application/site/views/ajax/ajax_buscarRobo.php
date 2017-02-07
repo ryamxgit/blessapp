@@ -1,0 +1,153 @@
+<div class="row">
+<!-- NEW WIDGET START -->
+<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="widget-body no-padding">
+					<!-- this is what the user will see -->
+					<table id="datatable_fixed_column"  class="table table-striped table-bordered table-hover" width="100%">
+					<thead>
+						<tr>
+							<th class="hasinput" style="width:10%">
+								<input type="text" class="form-control" placeholder="Folio" />
+							</th>
+							<th class="hasinput" style="width:18%">
+								<input type="text" class="form-control" placeholder="Lugar" />
+							</th>
+							<th class="hasinput" style="width:18%">
+								<input type="text" class="form-control" placeholder="Fecha" />
+							</th>
+							<th class="hasinput" style="width:18%">
+								<input type="text" class="form-control" placeholder="Rut de Cliente" />
+							</th>
+							<th class="hasinput" style="width:18%">
+								<input type="text" class="form-control" placeholder="Nombre Cliente" />
+							</th>
+						</tr>
+						<tr>
+							<th>Folio</th>
+							<th><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Lugar </th>
+							<th><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Fecha</th>
+							<th><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Rut</th>
+							<th><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Nombre Cliente</th>
+						</tr>
+					</thead>
+					<tbody id="tabloide">
+					<?php foreach ($robos as $r) { ?>
+						<tr>
+							<td><?php echo $r['folio'];?></td>
+							<td><?php echo $r['lugar'];?></td>
+							<td><?php echo $r['fecha'];?></td>
+							<td><?php echo $r['rut'];?></td>
+							<td><?php echo $r['nombre_cliente'];?></td>
+						</tr>
+					<?php } ?>
+					</tbody>
+				</table>
+			</div>
+</article>
+<!-- WIDGET END -->
+<!-- PAGE RELATED PLUGIN(S) -->
+</div>
+		<script src="<?php echo base_url('assets/js/plugin/datatables/jquery.dataTables.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/js/plugin/datatables/dataTables.colVis.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/js/plugin/datatables/dataTables.tableTools.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/js/plugin/datatables/dataTables.bootstrap.min.js'); ?>"></script>
+		<script type="text/javascript">
+
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+		
+		$(document).ready(function() {
+			
+			pageSetUp();
+			
+			/* // DOM Position key index //
+			
+				l - Length changing (dropdown)
+				f - Filtering input (search)
+				t - The Table! (datatable)
+				i - Information (records)
+				p - Pagination (paging)
+				r - pRocessing 
+				< and > - div elements
+				<"#id" and > - div with an id
+				<"class" and > - div with a class
+				<"#id.class" and > - div with an id and class
+				
+				Also see: http://legacy.datatables.net/usage/features
+			*/	
+	
+			/* BASIC ;*/
+			
+			$('#dt_basic').dataTable();
+	
+			
+			/* END BASIC */
+			
+			/* COLUMN FILTER  */
+		    var otable = $('#datatable_fixed_column').DataTable({
+		    	//"bFilter": false,
+		    	//"bInfo": false,
+		    	//"bLengthChange": false
+		    	//"bAutoWidth": false,
+		    	//"bPaginate": false,
+		    	//"bStateSave": true // saves sort state using localStorage
+				"sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+			
+		    });
+		    
+		    // custom toolbar
+		    //$("div.toolbar").html('<div class="text-right"><nav><a href="getAjax/crearRobo">Reportar nuevo Robo</a></nav></div>');
+		    // Apply the filter
+		    $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
+		    	
+		        otable
+		            .column( $(this).parent().index()+':visible' )
+		            .search( this.value )
+		            .draw();
+		            
+		    } );
+		    /* END COLUMN FILTER */   
+	    
+			/* COLUMN SHOW - HIDE */
+			$('#datatable_col_reorder').dataTable({
+				"sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'C>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+			});
+			
+			/* END COLUMN SHOW - HIDE */
+	
+			/* TABLETOOLS */
+			$('#datatable_tabletools').dataTable({
+				
+				// Tabletools options: 
+				//   https://datatables.net/extensions/tabletools/button_options
+				"sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'T>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>",
+		        "oTableTools": {
+		        	 "aButtons": [
+		             "copy",
+		             "csv",
+		             "xls",
+		                {
+		                    "sExtends": "pdf",
+		                    "sTitle": "SmartAdmin_PDF",
+		                    "sPdfMessage": "GQTech PDF Export",
+		                    "sPdfSize": "letter"
+		                },
+		             	{
+	                    	"sExtends": "print",
+	                    	"sMessage": "Generated by GQTech <i>(press Esc to close)</i>"
+	                	}
+		             ],
+		            "sSwfPath": "assests/js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+		        }
+			});
+			
+			/* END TABLETOOLS */
+
+		})
+
+		</script>

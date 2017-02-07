@@ -1,0 +1,269 @@
+/* General styles for the modal */
+
+/* 
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the 
+perspective effects (not including the modals and the overlay).
+*/
+.moingreinput {
+  width: 197px;
+  float: left;
+  height: 30px;
+  padding-top: 2px;
+}
+
+.moingreinput .inpFont {
+    border: 0px;
+  height: 22px;
+  width: 190px;
+  padding-left: 10px;
+}
+button.md-trigger {
+  background-color: #FFa201;
+  border: 0px;
+  color: white;
+  padding: 10px;
+  float: right;
+  font-size: 15px;
+  cursor: pointer;
+  width: 250px; cursor:pointer;
+}
+
+button.md-trigger:hover {
+  background-color: #000000;
+  
+}
+
+
+.md-perspective,
+.md-perspective body {
+	height: 100%;
+	overflow: hidden;
+}
+
+.md-perspective body  {
+	background: #222;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+}
+
+.container {
+	background: #e74c3c;
+	min-height: 100%;
+}
+
+.md-modal {
+	  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 41%;
+  max-width: 380px;
+  min-width: 320px;
+  height: auto;
+  z-index: 2000;
+  visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.md-show {
+	visibility: visible;
+}
+
+.md-overlay {
+	  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.48);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+	color: #fff;
+	background: #ffa201;
+	position: relative;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+button.cambi {
+  background: black;
+  color: white;
+  border: 0px;
+  padding: 11px;
+  float: right;
+}
+
+button.md-close {
+  background: white;
+  border: 0px;
+  position: absolute;
+  right: 0px;
+  font-size: 13px;
+    cursor: pointer;
+}
+
+.md-content h3 {
+	  margin: 0;
+  padding: 12px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 300;
+  opacity: 0.8;
+  background: rgba(0,0,0,0.1);
+  border-radius: 3px 3px 0 0;
+}
+
+.md-content > div {
+	  padding: 15px 40px 30px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.15em;
+  float: left;
+  background: #ffa201;
+}
+
+.md-content > div p {
+	margin: 0;
+	padding: 10px 0;
+}
+
+.md-content > div ul {
+	margin: 0;
+	padding: 0 0 30px 20px;
+}
+
+.md-content > div ul li {
+	padding: 5px 0;
+}
+
+.md-content button {
+	display: block;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+/* Individual modal styles with animations/transitions */
+
+
+
+/* Effect 7:  slide and stick to top */
+.md-effect-7{
+	top: 0;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.md-effect-7 .md-content {
+	-webkit-transform: translateY(-200%);
+	-moz-transform: translateY(-200%);
+	-ms-transform: translateY(-200%);
+	transform: translateY(-200%);
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
+	opacity: 0;
+}
+.moingre {
+  width: 100px;
+  float: left;
+    font-size: 16px;
+}
+
+.inin {
+  float: left;
+}
+
+.md-show.md-effect-7 .md-content {
+	-webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  border-radius: 0 0 3px 3px;
+  opacity: 1;
+  font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 200;
+}
+
+
+
+@-webkit-keyframes slit {
+	50% { -webkit-transform: translateZ(-250px) rotateY(89deg); opacity: .5; -webkit-animation-timing-function: ease-out;}
+	100% { -webkit-transform: translateZ(0) rotateY(0deg); opacity: 1; }
+}
+
+@-moz-keyframes slit {
+	50% { -moz-transform: translateZ(-250px) rotateY(89deg); opacity: .5; -moz-animation-timing-function: ease-out;}
+	100% { -moz-transform: translateZ(0) rotateY(0deg); opacity: 1; }
+}
+
+@keyframes slit {
+	50% { transform: translateZ(-250px) rotateY(89deg); opacity: 1; animation-timing-function: ease-in;}
+	100% { transform: translateZ(0) rotateY(0deg); opacity: 1; }
+}
+
+
+@-webkit-keyframes rotateRightSideFirst {
+	50% { -webkit-transform: translateZ(-50px) rotateY(5deg); -webkit-animation-timing-function: ease-out; }
+	100% { -webkit-transform: translateZ(-200px); }
+}
+
+@-moz-keyframes rotateRightSideFirst {
+	50% { -moz-transform: translateZ(-50px) rotateY(5deg); -moz-animation-timing-function: ease-out; }
+	100% { -moz-transform: translateZ(-200px); }
+}
+
+@keyframes rotateRightSideFirst {
+	50% { transform: translateZ(-50px) rotateY(5deg); animation-timing-function: ease-out; }
+	100% { transform: translateZ(-200px); }
+}
+
+penTop 0.5s forwards ease-in;
+}
+
+@-webkit-keyframes OpenTop {
+	50% { 
+		-webkit-transform: rotateX(10deg); 
+		-webkit-animation-timing-function: ease-out; 
+	}
+}
+
+@-moz-keyframes OpenTop {
+	50% { 
+		-moz-transform: rotateX(10deg); 
+		-moz-animation-timing-function: ease-out; 
+	}
+}
+
+@keyframes OpenTop {
+	50% { 
+		transform: rotateX(10deg); 
+		animation-timing-function: ease-out; 
+	}
+}
+
+
+@media screen and (max-width: 32em) {
+	body { font-size: 75%; }
+}
