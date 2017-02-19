@@ -16,7 +16,7 @@
 </div>
 <br />
 <br />
-<form name="formdefault" method="post" action="/site/send">
+<form name="formdefault" method="post" action="/{uribase}/save">
 	   {tabla_datos}
 		<p>{text}</p>
 		<p>{input}</p>
@@ -24,3 +24,7 @@
 	</form>
 </div> <!-- end topbody -->
 <div id="ghostbox"></div>
+<script language="javascript">
+	var pivotes = {tabla_pivote};
+	var personas = {tabla_terapeutas};
+</script>

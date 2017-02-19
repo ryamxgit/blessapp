@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.css" />
 <?php 
 foreach($css_files as $file): ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -38,15 +39,16 @@ a:hover
 {
 	text-decoration: underline;
 }
+h1 {
+	text-align: center;
+}
 </style>
 </head>
 <body>
+<?php echo $menu; ?>
     <div>
-	<a href="/blessapp/adminTerapias">Administrar Terapias</a>
-	<a href="/blessapp/adminTerapeuta">Administrar Terapeutas</a>
-    </div>
-    <div>
-	 &nbsp;
+	<h1>Centro Bless</h1>
+	<center><img src="/assets/img/2015LOGOBLESSnuevochico.png" /></center>
     </div>
 </body>
 </html>

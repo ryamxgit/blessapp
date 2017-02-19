@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.css" />
 <?php 
 foreach($css_files as $file): ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -41,10 +42,7 @@ a:hover
 </style>
 </head>
 <body>
-    <div>
-	<a href="/blessapp/adminTerapias">Administrar Terapias</a>
-	<a href="/blessapp/adminTerapeuta">Administrar Terapeutas</a>
-    </div>
+<?php echo $menu; ?>
     <div>
 		<?php echo $output; ?>
     </div>

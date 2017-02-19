@@ -55,7 +55,8 @@ p {
 </head>
 <body>
 	<div id="container">
-		<img src="assets/site/img/logo_negro.png">
+		<h1>No encontrado!</h1>	
+		<h6><a href="javscript:window.history.back()">Volver</a></h6>
 	</div>
 </body>
 </html>
