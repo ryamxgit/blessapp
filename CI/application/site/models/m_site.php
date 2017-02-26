@@ -35,6 +35,13 @@ class M_site extends CI_Model
         return $data->num_rows();
     }
 
+    public function getTopmenu() {
+        $data     = array();
+        $result   = $this->db->query($this->sql['s_topmenu'], $data);
+        $data     = $this->_get_result_array($result);
+        return $data;   
+    }
+
     public function getTerapeuta() {
         $data     = array();
         $result   = $this->db->query($this->sql['s_terapeuta'], $data);

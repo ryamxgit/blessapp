@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="/assets/css/admin.css" />
 <?php 
 foreach($css_files as $file): ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -27,7 +28,6 @@ body
 {
 	font-family: Arial;
 	font-size: 14px;
-    margin: 0;
     padding: 0;
 }
 a {
@@ -46,7 +46,7 @@ h1 {
 </head>
 <body>
 <?php echo $menu; ?>
-    <div>
+    <div id="content">
 	<h1>Centro Bless</h1>
 	<center><img src="/assets/img/2015LOGOBLESSnuevochico.png" /></center>
     </div>

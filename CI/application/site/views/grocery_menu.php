@@ -5,7 +5,7 @@
 			<div class="btn-group btn-group-lg">
 			{menu}	 
 				<button class="btn btn-default" type="button">
-					<a href="{link}"><span>{titulo}</span></a>
+					<a href="/{ub}{link}"><span>{titulo}</span></a>
 				</button> 
 			{/menu}
 			</div>

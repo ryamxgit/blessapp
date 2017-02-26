@@ -1,0 +1,17 @@
+body {
+	width: 98%;
+	margin: 0px  auto;
+}
+#calendario {
+	width: 95%;
+	margin: 0 auto;
+}
+.col-md-12 {
+	border: 1px solid #ECECEC;
+	margin-bottom: 20px;
+}
+#content {
+	border: 1px solid #ECECEC;
+	height: 500px;
+	overflow: auto;
+}

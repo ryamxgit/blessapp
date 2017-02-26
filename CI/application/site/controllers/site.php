@@ -65,12 +65,11 @@ class Site extends CI_Controller {
 			case 'terapeuta':
 				$this->adminTerapeuta();
 				break;
+			case 'agendas':
+				$this->adminAgenda();
+				break;
 			default:
-				$this->load->library('grocery_CRUD');
-				$this->grocery_crud->set_table('terapias');
-				$out = $this->grocery_crud->render();
-				$out->menu = $this->adminGetMenu();
-				$this->load->view('grocery_0', $out);
+				$this->adminMain();
 		}
 	}
 
@@ -80,16 +79,41 @@ class Site extends CI_Controller {
 			return;
 		}
 	}
+
+	private function adminMain() {
+		$this->load->library('grocery_CRUD');
+		$this->grocery_crud->set_table('terapias');
+		$out = $this->grocery_crud->render();
+		$out->menu = $this->adminGetMenu();
+		$this->load->view('grocery_0', $out);
+	}
 	
 	private function adminGetMenu() {
-		$menu = array('menu' => array(
-						array('titulo' => 'Citas', 'link' => '/'.$this->uribase.'/admin/citas'),
-						array('titulo' => 'Terapias', 'link' => '/'.$this->uribase.'/admin/terapias'),
-						array('titulo' => 'Terapeutas', 'link' => '/'.$this->uribase.'/admin/terapeuta'),
-						array('titulo' => 'Agendas', 'link' => '/'.$this->uribase.'/admin/agendas')
-					)
-		);
+		$menu = array('ub' => $this->uribase, 'menu' => $this->M_site->getTopmenu());
 		return $this->parser->parse('grocery_menu', $menu, true);
+	}
+
+	private function adminAgenda()
+	{
+		$cssdir = '/assets/css/';
+		$jsdir =  '/assets/js/';
+		$out = new stdClass();
+		$out->css_files = array($cssdir.'fullcalendar.css',
+					'/assets/grocery_crud/themes/flexigrid/css/flexigrid.css',
+					'/assets/grocery_crud/css/jquery_plugins/fancybox/jquery.fancybox.css',
+					'/assets/grocery_crud/css/ui/simple/jquery-ui-1.10.1.custom.min.css'
+		);
+
+		$out->js_files = array( $jsdir.'libs/jquery-2.0.2.min.js',
+					'/assets/grocery_crud/js/jquery_plugins/ui/jquery-ui-1.10.3.custom.min.js',
+					$jsdir.'moment.min.js', 
+					$jsdir.'fullcalendar.js', 
+					$jsdir.'es.js', 
+					$jsdir.'blessadmin.js'
+		);
+		$out->menu = $this->adminGetMenu();
+		$out->siteurl = $this->config->item('base_url');
+		$this->load->view('grocery_calendar', $out);
 	}
 
 	private function adminCitas()
